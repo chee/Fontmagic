@@ -1,0 +1,48 @@
+<!doctype html>
+<title>Pick ur fonts</title>
+
+<style>
+	body {
+		background: #3399cc;
+		width: 90%;
+		margin: 2em auto;
+	}
+
+	input, select, button {
+		width: 18%;
+		background: #f7f7f7;
+		border: 1px solid #ccc;
+		font-family: monospace;
+	}
+</style>
+
+<input type="text" placeholder="roboto" id="family">
+
+<select id="style">
+	<option value="normal">normal</option>
+	<option value="italic">italic</option>
+</select>
+
+<select id="weight">
+	<option value="100">100</option>
+	<option value="200">200</option>
+	<option value="300">300</option>
+	<option value="400">400</option>
+	<option value="500">500</option>
+	<option value="600">600</option>
+	<option value="700">700</option>
+	<option value="800">800</option>
+	<option value="900">900</option>
+</select>
+
+<input type="text" placeholder="http://example.com/myfont.woff" id="url">
+
+<button>Add</button>
+
+<input type="file" id="file">
+
+<table>
+</table>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/options.js"></script>
