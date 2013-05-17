@@ -6,7 +6,7 @@ function fontmagic ( object ) {
 	});
 }
 
-function inject() {
+function inject () {
 	chrome.storage.local.get( null, function ( fonts ) {
 		var style = '<style>';
 		Object.keys( fonts ).forEach(function ( key ) {

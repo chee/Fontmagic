@@ -14,11 +14,9 @@ function addFont( family, style, weight, url ) {
 	};
 
 	chrome.storage.local.set( font, function() {
-		familyInput.val( '' );
-		styleInput.val( 'normal' );
-		weightInput.val( '300' );
-		urlInput( '' );
+		showFonts();
 	});
+
 }
 
 
@@ -32,7 +30,27 @@ options.on( 'click', 'button', function () {
 }).on( 'change', '#file', function( event ) {
 	var reader = new FileReader();
 	reader.onload = function ( event ) {
-		urlInput.val( event.target.result )
-	}
+		urlInput.val( event.target.result );
+	};
 	reader.readAsDataURL( event.target.files[0] );
 });
+
+var table = document.querySelector( 'table' );
+
+function showFonts() {
+	table.innerHTML = '';
+	chrome.storage.local.get( null, function ( fonts ) {
+		Object.keys( fonts ).forEach(function ( key ) {
+			var font = fonts[ key ];
+			var row = table.insertRow();
+			row.style.fontFamily = font.family;
+			[ 'Family', 'Style', 'Weight' ].forEach( function ( attr ) {
+				var attribute = attr.toLowerCase();
+				row.style[ 'font' + attr ] = font[ attribute ];
+				row.insertCell().innerText = font[ attribute ];
+			});
+		});
+	});
+}
+
+showFonts();
